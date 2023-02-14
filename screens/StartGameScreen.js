@@ -1,5 +1,13 @@
 import { useState } from "react";
-import { TextInput, View, StyleSheet, Alert, Text } from "react-native";
+import {
+	TextInput,
+	View,
+	StyleSheet,
+	Alert,
+	Text,
+	KeyboardAvoidingView,
+	ScrollView,
+} from "react-native";
 import Card from "../components/ui/Card";
 import PrimaryButton from "../components/ui/PrimaryButton";
 import Title from "../components/ui/Title";
@@ -29,31 +37,35 @@ function StartGameScreen({ onPickNumber }) {
 	}
 
 	return (
-		<View style={styles.mainContainer}>
-			<Title>Guess My Number</Title>
-			<Card>
-				<Text style={styles.instructionText}>Enter a number</Text>
-				<TextInput
-					style={styles.numberInput}
-					maxLength={2}
-					keyboardType="number-pad"
-					autoCapitalize="none"
-					autoCorrect={false}
-					value={enteredNumber}
-					onChangeText={handleInputChange}
-				/>
-				<View style={styles.buttonsContainer}>
-					<View style={styles.buttonContainer}>
-						<PrimaryButton onPress={resetInputHandler}>Reset</PrimaryButton>
-					</View>
-					<View style={styles.buttonContainer}>
-						<PrimaryButton onPress={confirmEnteredNumber}>
-							Confirm
-						</PrimaryButton>
-					</View>
+		<ScrollView style={{ flex: 1 }}>
+			<KeyboardAvoidingView style={{ flex: 1 }} behavior="position">
+				<View style={styles.mainContainer}>
+					<Title>Guess My Number</Title>
+					<Card>
+						<Text style={styles.instructionText}>Enter a number</Text>
+						<TextInput
+							style={styles.numberInput}
+							maxLength={2}
+							keyboardType="number-pad"
+							autoCapitalize="none"
+							autoCorrect={false}
+							value={enteredNumber}
+							onChangeText={handleInputChange}
+						/>
+						<View style={styles.buttonsContainer}>
+							<View style={styles.buttonContainer}>
+								<PrimaryButton onPress={resetInputHandler}>Reset</PrimaryButton>
+							</View>
+							<View style={styles.buttonContainer}>
+								<PrimaryButton onPress={confirmEnteredNumber}>
+									Confirm
+								</PrimaryButton>
+							</View>
+						</View>
+					</Card>
 				</View>
-			</Card>
-		</View>
+			</KeyboardAvoidingView>
+		</ScrollView>
 	);
 }
 

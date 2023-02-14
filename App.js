@@ -59,15 +59,18 @@ export default function App() {
 	}
 
 	return (
-		<LinearGradient colors={["#4e0329", "#ddb52f"]} style={styles.root}>
-			<ImageBackground
-				source={require("./assets/images/background.png")}
-				resizeMode="cover"
-				style={styles.root}
-				imageStyle={styles.backgroundImage}>
-				<SafeAreaView style={styles.root}>{screen}</SafeAreaView>
-			</ImageBackground>
-		</LinearGradient>
+		<>
+			<StatusBar style="light" />
+			<LinearGradient colors={["#4e0329", "#ddb52f"]} style={styles.root}>
+				<ImageBackground
+					source={require("./assets/images/background.png")}
+					resizeMode="cover"
+					style={styles.root}
+					imageStyle={styles.backgroundImage}>
+					<SafeAreaView style={styles.root}>{screen}</SafeAreaView>
+				</ImageBackground>
+			</LinearGradient>
+		</>
 	);
 }
 
